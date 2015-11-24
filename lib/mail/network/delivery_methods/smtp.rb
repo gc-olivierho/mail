@@ -73,6 +73,9 @@ module Mail
   #   end
   # 
   #   mail.deliver!
+  #
+  # Note: you can force a different connection timeout than the
+  # default Net::SMTP open_timeout with the :timeout setting (in seconds)
   class SMTP
     include Mail::CheckDeliveryParams
 
@@ -106,6 +109,9 @@ module Mail
         if smtp.respond_to?(:enable_starttls_auto)
           smtp.enable_starttls_auto(ssl_context)
         end
+      end
+      if settings[:timeout]
+        smtp.open_timeout = settings[:timeout]
       end
 
       response = nil

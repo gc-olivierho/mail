@@ -97,7 +97,7 @@ module Mail
   # 
   # You can also just modify the settings:
   # 
-  #   mail.delivery_settings = { :address => 'some.host' }
+  #   mail.delivery_settings = { :address => 'some.host', :timeout => 5 }
   # 
   # The passed in hash is just merged against the defaults with +merge!+ and the result
   # assigned the mail object.  So the above example will change only the :address value
